@@ -8,7 +8,8 @@ import { GameService } from "../services/game.service";
         key: 'dummy',
         type: 'member'
     }],
-    canRun: [GameService.userInGame]
+    canRun: [GameService.userInGame],
+    description: 'Dummy'
 })
 export class DummyCommand implements Action {
     constructor(public gameService: GameService) {}

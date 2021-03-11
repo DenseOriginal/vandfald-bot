@@ -10,6 +10,8 @@ import { KickCommand } from "./commands/kick";
 import { LeaveCommand } from "./commands/leave";
 import { ListGamesCommand } from "./commands/list";
 import { StartCommand } from "./commands/start";
+import { SkipCommand } from "./commands/skip";
+import { ShuffleCommand } from "./commands/shuffle";
 
 @Handler({
     name: 'main',
@@ -23,15 +25,19 @@ import { StartCommand } from "./commands/start";
         JoinCommand,
         KickCommand,
         StartCommand,
-        HelpCommand
-    ]
+        HelpCommand,
+        SkipCommand,
+        ShuffleCommand
+    ],
+    description: 'Main'
 })
 class MainHandler { }
 
+export const prefix = '!';
+
 const client = bootstrap(MainHandler, {
-    prefix: '!',
+    prefix,
     token: process.env.BOT_TOKEN as string
 }).on('ready', () => {
-    console.log('Bot is ready');
     client.user?.setActivity('vandfald', { type: 'COMPETING' });
 });

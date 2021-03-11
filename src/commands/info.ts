@@ -7,7 +7,8 @@ import { GameService } from "../services/game.service";
         key: 'usersGame',
         type: 'member',
         optional: true
-    }]
+    }],
+    description: 'Finder information om et spil'
 })
 export class InfoCommand implements Action {
     constructor(public gameService: GameService) {}

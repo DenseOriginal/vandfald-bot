@@ -1,5 +1,5 @@
 import { FriendlyError, Service } from "discord-framework";
-import { GuildMember, Message, User } from "discord.js";
+import { GuildManager, GuildMember, Message, User } from "discord.js";
 import { Game } from "../utils/game";
 
 const games: Game[] = []

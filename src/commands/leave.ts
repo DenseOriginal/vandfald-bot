@@ -4,7 +4,8 @@ import { GameService } from "../services/game.service";
 @Command({
     name: 'forlad',
     alias: ['leave'],
-    canRun: [GameService.userInGame]
+    canRun: [GameService.userInGame],
+    description: 'Forlader et spil'
 })
 export class LeaveCommand implements Action {
     constructor(public gameService: GameService) {}

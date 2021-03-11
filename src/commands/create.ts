@@ -4,7 +4,8 @@ import { GameService } from "../services/game.service";
 @Command({
     name: 'opret',
     alias: ['create'],
-    canRun: [GameService.userNotInGame]
+    canRun: [GameService.userNotInGame],
+    description: 'Opretter et spil'
 })
 export class CreateCommand implements Action {
     constructor(public gameService: GameService) {}

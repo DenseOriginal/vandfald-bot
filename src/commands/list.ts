@@ -2,7 +2,8 @@ import { Action, Command } from "discord-framework";
 import { GameService } from "../services/game.service";
 
 @Command({
-    name: 'list'
+    name: 'list',
+    description: 'List'
 })
 export class ListGamesCommand implements Action {
     constructor(public gameService: GameService) {}

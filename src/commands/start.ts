@@ -1,4 +1,5 @@
 import { Action, ActionContext, Command } from "discord-framework";
+import { MessageEmbed } from "discord.js";
 import { GameService } from "../services/game.service";
 
 @Command({
@@ -7,7 +8,8 @@ import { GameService } from "../services/game.service";
     canRun: [
         GameService.isOwnerInGame,
         GameService.gameIsNotStarted
-    ]
+    ],
+    description: 'Starter et spil'
 })
 export class StartCommand implements Action {
     constructor(public gameService: GameService) {}
@@ -16,6 +18,8 @@ export class StartCommand implements Action {
         const user = message.author;
         const game = this.gameService.findGame(user);
         game?.start();
-        return 'Spillet er blevet startet';
+        return new MessageEmbed()
+            .setAuthor('Spillet er begyndt')
+            .setDescription(`Den første person til at trække et kort er <@${game?.currentPlayer?.id}>`);
     }
 }

@@ -9,7 +9,8 @@ import { GameService } from "../services/game.service";
         key: 'userToKick',
         type: 'member',
         validators: [GameService.isAuthorAndUserInSameGame]
-    }]
+    }],
+    description: 'Smider en person ud af et spil'
 })
 export class KickCommand implements Action {
     constructor(public gameService: GameService) {}

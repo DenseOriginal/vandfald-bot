@@ -17,7 +17,8 @@ function isUserInGame(member: GuildMember): FriendlyError | void {
         key: 'userToJoin',
         type: 'member',
         validators: [isUserInGame]
-    }]
+    }],
+    description: 'Tilslutter et spil'
 })
 export class JoinCommand implements Action {
     constructor(public gameService: GameService) {}
@@ -27,6 +28,7 @@ export class JoinCommand implements Action {
         const userToJoin: User = args.userToJoin.user;
         const gameToJoin = this.gameService.findGame(userToJoin);
         if(!gameToJoin) return 'Kan ikke finde det spil du leder efter';
+        if(gameToJoin.started) return 'Spillet er desværre allerede begyndt'
         gameToJoin?.addUser(author);
         return `Du har tilsluttet ${userToJoin.username}'s spil`;
     }
