@@ -1,6 +1,6 @@
 import { Action, ActionContext, Command } from "discord-framework";
 import { GuildMember } from "discord.js";
-import { GameService } from "../services/game.service";
+import { GameService } from "../../services/game.service";
 
 @Command({
     name: 'addDummy',
