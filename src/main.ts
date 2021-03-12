@@ -40,7 +40,7 @@ export const ownerID = '248363557370986496';
 const client = bootstrap(MainHandler, {
     prefix,
     token: process.env.BOT_TOKEN as string,
-    usePingAsPrefix: true,
+    usePingAsPrefix: false,
 }).on('ready', () => {
     client.user?.setActivity('vandfald', { type: 'COMPETING' });
 });

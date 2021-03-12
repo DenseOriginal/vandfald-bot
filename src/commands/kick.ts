@@ -8,7 +8,8 @@ import { GameService } from "../services/game.service";
     arguments: [{
         key: 'userToKick',
         type: 'member',
-        validators: [GameService.isAuthorAndUserInSameGame]
+        validators: [GameService.isAuthorAndUserInSameGame],
+        description: 'Du skal huske og tagge den person du vil kicke'
     }],
     description: 'Smider en person ud af et spil'
 })

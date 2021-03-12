@@ -5,18 +5,19 @@ import { GameService } from "../services/game.service";
 // Validator function
 function isUserInGame(member: GuildMember): FriendlyError | void {
     const user = member.user;
-    const isUserInGame = GameService.games.some(game => game.isUserInThisGame(user));
+    const isUserInGame = GameService.getGames().some(game => game.isUserInThisGame(user));
     if (!isUserInGame) return new FriendlyError(`<@${user.id}> er ikke i et spil`);
     return;
 }
 
 @Command({
-    name: 'join',
+    name: 'joine',
     canRun: [GameService.userNotInGame],
     arguments: [{
         key: 'userToJoin',
         type: 'member',
-        validators: [isUserInGame]
+        validators: [isUserInGame],
+        emptyMessage: 'Du skal huske og tagge den person du vil join'
     }],
     description: 'Tilslutter et spil'
 })

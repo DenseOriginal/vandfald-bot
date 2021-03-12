@@ -12,7 +12,7 @@ export class LeaveCommand implements Action {
 
     action({ message }: ActionContext) {
         const game = this.gameService.findGame(message.author);
-        if(!game) return;
+        if(!game) return 'Du er ikke i et spil';
         const userWasOwner = game.isUserOwner(message.author);
         game.leave(message.author);
         if(game.isEmpty) { this.gameService.removeGame(game); return 'Du har forladt dit spil' };

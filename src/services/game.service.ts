@@ -7,21 +7,18 @@ let gameIdIncremental = 0;
 
 @Service()
 export class GameService {
-    get games(): Game[] { return games }
-    static get games(): Game[] { return games }
-
     createGame(owner: User) {
-        const isUserInGame = this.games.some(game => game.isUserInThisGame(owner));
+        const isUserInGame = games.some(game => game.isUserInThisGame(owner));
         if(isUserInGame) return;
 
         const newGame = new Game(owner, gameIdIncremental++);
 
-        this.games.push(newGame);
+        games.push(newGame);
         return newGame;
     }
 
     findGame(user: User): Game | undefined {
-        return this.games.find(game => game.isUserInThisGame(user));
+        return games.find(game => game.isUserInThisGame(user));
     }
 
     findGameById(id: number): Game | undefined {
@@ -29,12 +26,16 @@ export class GameService {
     }
 
     getAllGames(): Game[] {
-        return this.games;
+        return games;
     }
 
     removeGame(game: Game) {
         const indexInGameArray = games.findIndex(g => g.id == game.id);
         games.splice(indexInGameArray, 1);
+    }
+    
+    static getGames(): Game[] {
+        return games;
     }
 
     // Auth functions
@@ -53,7 +54,7 @@ export class GameService {
     static isUsersTurn(message: Message): FriendlyError | void {
         const user = message.author;
         const game = games.find(game => game.isUserInThisGame(user));
-        if(!game) return new FriendlyError('Du skal være i et spil');
+        if(!game) return new FriendlyError('');
         if(user.id != game.currentPlayer?.id) return new FriendlyError('Det ikke din tur endnu');
         return;
     }
@@ -78,7 +79,7 @@ export class GameService {
     static isGameStarted(message: Message): FriendlyError | void {
         const user = message.author;
         const game = games.find(game => game.isUserInThisGame(user));
-        if(!game) return new FriendlyError('Du er ikke i et spil');
+        if(!game) return new FriendlyError('');
         const howToStartMessage = game.isUserOwner(user) ? `Du er ejeren af spillet, skriv \`!start\` for at starte spillet` : `Bed <@${game.owner}> om at starte spillet ved at skrive \`!start\``
         if(!game.started) return new FriendlyError(`Spillet er ikke startet endnu. ${howToStartMessage}`);
         return;

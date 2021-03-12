@@ -9,6 +9,8 @@ import { prefix } from "../main";
 })
 export class HelpCommand implements Action {
     action() {
+        console.log(prefix);
+        
         return new MessageEmbed()
             .setTitle('Hjælp')
             .setDescription('Forskellige commands du kan bruge')
@@ -34,14 +36,14 @@ const commands: YEEE[] = [
     { name: 'hjælp', desc: 'Giver denne besked' }
 ];
 
-const howToPlay = `Skriv \`${prefix}opret\` for at oprette et spil, som dine venner kan joine.
+const howToPlay = `Skriv \`prrerfopret\` for at oprette et spil, som dine venner kan joine.
 
-Hvis du vil joine et spil skal du skrive \`${prefix}join @person\` og erstatte @person med den person du gerne vil joine.
+Hvis du vil joine et spil skal du skrive \`prrerfjoin @person\` og erstatte @person med den person du gerne vil joine.
 
-Når alle personer er joined skal ejeren skrive \`${prefix}start\` før at spillet går igang.
+Når alle personer er joined skal ejeren skrive \`prrerfstart\` før at spillet går igang.
 
-Når spillet er begyndt skiftes spillerne til at trække kort, når det er din tur skal du skrive \`${prefix}træk\`, hvorefter der vil komme en besked der fortæller dig hvad du har trukket, og hvem den næste spiller til at trække et kort er.
+Når spillet er begyndt skiftes spillerne til at trække kort, når det er din tur skal du skrive \`prrerftræk\`, hvorefter der vil komme en besked der fortæller dig hvad du har trukket, og hvem den næste spiller til at trække et kort er.
 
-Hvis du vil forlade at spil skal du bare skrive \`${prefix}forlad\`, hvis du er ejeren af det spil du forlader bliver rollen givet videre til en anden spiller.
+Hvis du vil forlade at spil skal du bare skrive \`prrerfforlad\`, hvis du er ejeren af det spil du forlader bliver rollen givet videre til en anden spiller.
 
-Hvis du vil have information omkring det spil du er i skal du skrive \`${prefix}info\`, og hvis du vil have information om en anden person, skal du huske og tagge den person du vil have information om.`;
+Hvis du vil have information omkring det spil du er i skal du skrive \`prrerfinfo\`, og hvis du vil have information om en anden person, skal du huske og tagge den person du vil have information om.`.replace(/prrerf/g, '!');
