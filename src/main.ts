@@ -30,7 +30,7 @@ import { DevHandler } from "./commands/dev/handler";
     handlers: [DevHandler],
     description: 'Main',
     silentOnUnknownCommand: true,
-    canRun: [isRunInVandfaldChannel]
+    // canRun: [isRunInVandfaldChannel]
 })
 class MainHandler { }
 
