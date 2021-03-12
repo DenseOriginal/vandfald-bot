@@ -7,7 +7,7 @@ const vandfaldCategoryID = "819643234987933708";
 export function isRunInVandfaldChannel(message: Message): FriendlyError | void {
     // If it's the owner ignore the category check
     // if(message.author.id == ownerID) return;
-    return;
+    
     if ((message?.channel as TextChannel)?.parent?.id == vandfaldCategoryID) return;
     return new FriendlyError(`Jeg kan kun blive brugt i <#${vandfaldCategoryID}>`);
 }
