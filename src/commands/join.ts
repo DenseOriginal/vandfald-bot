@@ -11,7 +11,7 @@ function isUserInGame(member: GuildMember): FriendlyError | void {
 }
 
 @Command({
-    name: 'joine',
+    name: 'join',
     canRun: [GameService.userNotInGame],
     arguments: [{
         key: 'userToJoin',
